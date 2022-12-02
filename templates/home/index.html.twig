@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h3 class="display-2 mb-4">Quran unify</h3>
+        {{form_start(form)}}
+
+        {{form_row(form.type)}}
+        {{form_row(form.language)}}
+        {{form_row(form.reciter)}}
+        {{form_row(form.surah)}}
+
+        <div class="row">
+            <div class="col">
+                {{form_row(form.verse_from)}}
+            </div>
+            <div class="col">
+                {{form_row(form.verse_to)}}
+            </div>
+        </div>
+
+        {{form_end(form)}}
+    </div>
+{% endblock %}
