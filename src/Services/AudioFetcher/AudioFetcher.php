@@ -35,6 +35,8 @@ class AudioFetcher
         foreach ($content['data'] as $language) {
             $languages[$language] = $this->getLanguageInfo($language);
         }
+
+        // dd($languages);
         return $languages;
     }
 

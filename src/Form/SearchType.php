@@ -41,7 +41,9 @@ class SearchType extends AbstractType
                 'choice_label' => function (?string $value) {
                     return $value;
                 },
-                'choice_value' => function (?string $array) {
+                'choice_value' => function (?string $string) {
+                    return $string;
+                    // dd($string);
                 },
                 'attr' => [
                     'class' => 'language-select'
