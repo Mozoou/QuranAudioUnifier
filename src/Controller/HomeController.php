@@ -6,6 +6,7 @@ use App\Form\SearchType;
 use App\Services\AudioFetcher\AudioFetcher;
 use App\Services\AudioUnify\AudioUnify;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,12 +20,12 @@ class HomeController extends AbstractController
     }
 
     #[Route('/', name: 'app_home')]
-    public function index(Request $request): Response
+    public function index(Request $request): Response | RedirectResponse
     {
         $form = $this->createForm(SearchType::class);
 
         $form->handleRequest($request);
-        
+
         if ($form->isSubmitted() && $form->isValid()) {
 
             $reciter = $form->get('reciter')->getData();
@@ -34,19 +35,12 @@ class HomeController extends AbstractController
 
             $audios = $this->audioFetcher->fetchAudioVerses($reciter, $surah, $verseFrom, $verseTo);
             $audioUnified = $this->audioUnify->unifier($audios);
-            
+
             if ($audioUnified) {
                 try {
-                    return $this->json(
-                        fopen($audioUnified, 'r', false),
-                        200,
-                        [
-                            'Content-Type' => 'audio/mpeg',
-                        ]
-                    );
-                    //code...
+                    return $this->redirect(strstr($audioUnified, '/mp3'));
                 } catch (\Throwable $th) {
-                    //throw $th;
+                    throw $th;
                 }
             }
         }

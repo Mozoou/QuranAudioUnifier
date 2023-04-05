@@ -22,11 +22,11 @@ class AudioUnify
         ]);
     }
 
-    public function unifier(array $audios): ?string
+    public function unifier(array $audios): string
     {
         $audioOutput = $this->ffmpeg->open($audios[0]);
 
-        $newFileName = $this->kernelInterface->getProjectDir() . '/var/mp3/unifieds/'.(new \DateTime())->format('d_m_y_h_i_s').'.mp3';
+        $newFileName = $this->kernelInterface->getProjectDir() . '/public/mp3/'.(new \DateTime())->format('d_m_y_h_i_s').'.mp3';
 
         try {
             $audioOutput
@@ -37,7 +37,5 @@ class AudioUnify
         } catch (\Throwable $th) {
             throw $th;
         }
-
-        return null;
     }
 }
