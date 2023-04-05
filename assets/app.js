@@ -29,7 +29,9 @@ const typeRadio = document.querySelector(".type-radio");
 const languageSelect = document.querySelector(".language-select");
 const reciterSelect = document.querySelector(".reciter-select");
 const surahSelect = document.querySelector(".surah-select");
-const verseToinput = document.querySelector(".verse-to-input");
+const verseFrominput = document.querySelector(".verse-from");
+const verseToinput = document.querySelector(".verse-to");
+
 
 if (surahSelect) {
     const reciterTomSelect = createTomSelect(reciterSelect);
@@ -46,6 +48,7 @@ if (surahSelect) {
         fetchSurahById(parseInt(value) + 1, (surah) => {
           // Display surah info and change toVerse input max
           verseToinput.max = surah.numberOfAyahs
+          verseFrominput.max = surah.numberOfAyahs
         });
     });
 }

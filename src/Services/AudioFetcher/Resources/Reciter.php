@@ -4,11 +4,23 @@ namespace App\Services\AudioFetcher\Resources;
 
 class Reciter
 {
+    private ?string $identifier = null;
+
     private ?string $name = null;
 
-    private ?string $subfolder = null;
+    private ?string $englishName = null;
 
-    private ?BitRate $bitrate = null;
+    public function getIdentifier(): ?string
+    {
+        return $this->identifier;
+    }
+
+    public function setIdentifier(string $identifier): self
+    {
+        $this->identifier = $identifier;
+
+        return $this;
+    }
 
     public function getName(): ?string
     {
@@ -22,26 +34,14 @@ class Reciter
         return $this;
     }
 
-    public function getSubfolder(): ?string
+    public function getEnglishName(): ?string
     {
-        return $this->subfolder;
+        return $this->englishName;
     }
 
-    public function setSubfolder(string $subfolder): self
+    public function setEnglishName(string $englishName): self
     {
-        $this->subfolder = $subfolder;
-
-        return $this;
-    }
-
-    public function getBitrate(): ?BitRate
-    {
-        return $this->bitrate;
-    }
-
-    public function setBitrate(?BitRate $bitrate): self
-    {
-        $this->bitrate = $bitrate;
+        $this->englishName = $englishName;
 
         return $this;
     }

@@ -23,44 +23,44 @@ class SearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('type', ChoiceType::class, [
-                'choices' => $this->audioFetcher->fetchTypes(),
-                'label' => false,
-                'expanded' => true,
-                'multiple' => false,
-                'choice_label' => function (string $value) {
-                    return ucfirst($value);
-                },
-                'attr' => [
-                    'class' => 'type-radio'
-                ]
-            ])
-            ->add('language', ChoiceType::class, [
-                'choices' => $this->audioFetcher->fetchLanguages(),
-                'label' => 'Language',
-                'choice_label' => function (?string $value) {
-                    return $value;
-                },
-                'choice_value' => function (?string $string) {
-                    return $string;
-                    // dd($string);
-                },
-                'attr' => [
-                    'class' => 'language-select'
-                ]
-            ])
+            // ->add('type', ChoiceType::class, [
+            //     'choices' => $this->audioFetcher->fetchTypes(),
+            //     'label' => false,
+            //     'expanded' => true,
+            //     'multiple' => false,
+            //     'choice_label' => function (string $value) {
+            //         return ucfirst($value);
+            //     },
+            //     'attr' => [
+            //         'class' => 'type-radio'
+            //     ]
+            // ])
+            // ->add('language', ChoiceType::class, [
+            //     'choices' => $this->audioFetcher->fetchLanguages(),
+            //     'label' => 'Language',
+            //     'choice_label' => function (?string $value) {
+            //         return $value;
+            //     },
+            //     'choice_value' => function (?string $string) {
+            //         return $string;
+            //         // dd($string);
+            //     },
+            //     'attr' => [
+            //         'class' => 'language-select'
+            //     ]
+            // ])
             ->add('reciter', ChoiceType::class, [
-                'choices' => [],
+                'choices' => $this->audioFetcher->fetchReciters(),
                 'label' => 'Reciter',
                 'choice_label' => function (?Reciter $reciter) {
-                    return $reciter ? strtoupper($reciter->getName()) : '';
+                    return $reciter ? strtoupper($reciter->getEnglishName() . ' ( ' . $reciter->getName() . ' )') : '';
                 },
                 'choice_attr' => function (?Reciter $reciter) {
-                    return $reciter ? ['class' => 'category_' . strtolower($reciter->getName())] : [];
+                    return $reciter ? ['class' => 'category_' . strtolower($reciter->getEnglishName())] : [];
                 },
-                'group_by' => function (Reciter $reciter) {
-                    return $reciter->getBitrate()->getName();
-                },
+                // 'group_by' => function (Reciter $reciter) {
+                //     return $reciter->getBitrate()->getName();
+                // },
                 'attr' => [
                     'class' => 'reciter-select'
                 ]
@@ -84,14 +84,15 @@ class SearchType extends AbstractType
             ->add('verse_from', IntegerType::class, [
                 'label' => 'From verse',
                 'attr' => [
-                    'min' => '1'
+                    'class' => 'verse-from',
+                    'min' => 1
                 ]
             ])
             ->add('verse_to', IntegerType::class, [
                 'label' => 'To verse',
                 'attr' => [
-                    'class' => 'verse-to-input',
-                    'max' => '7',
+                    'class' => 'verse-to',
+                    'min' => 1,
                 ]
             ])
             ->add('generate', SubmitType::class, [

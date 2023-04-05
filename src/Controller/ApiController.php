@@ -6,7 +6,6 @@ use App\Services\AudioFetcher\AudioFetcher;
 use App\Services\AudioFetcher\Resources\Surah;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Services\AudioFetcher\Resources\Reciter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ApiController extends AbstractController
