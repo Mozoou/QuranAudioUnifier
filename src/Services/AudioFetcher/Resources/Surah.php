@@ -13,7 +13,7 @@ class Surah
     private ?string $englishNameTranslation = null;
 
     private ?int $numberOfAyahs = null;
-    
+
     private ?string $revelationType = null;
 
     public function getNumber()

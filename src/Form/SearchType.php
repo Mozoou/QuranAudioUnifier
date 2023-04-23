@@ -101,7 +101,7 @@ class SearchType extends AbstractType
                     'class' => 'btn btn-primary'
                 ]
             ])
-            ;
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

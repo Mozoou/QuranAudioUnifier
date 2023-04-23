@@ -108,7 +108,7 @@ class AudioFetcher
 
         if (1 === count($n)) {
             return sprintf("%03d", $n[0]);
-        } else if (2 === count($n)) {
+        } elseif (2 === count($n)) {
             return sprintf("%02d", $n[0]);
         } else {
             implode('.', $n);

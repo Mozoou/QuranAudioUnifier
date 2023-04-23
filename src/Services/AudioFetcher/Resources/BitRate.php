@@ -2,7 +2,6 @@
 
 namespace App\Services\AudioFetcher\Resources;
 
-
 class BitRate
 {
     private ?string $name = null;

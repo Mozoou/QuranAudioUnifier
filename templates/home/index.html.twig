@@ -1,14 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Quran audio unifier{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h3 class="display-2 mb-4">Quran unify</h3>
+    <div class="container mt-5">
+        {# <h3 class="display-2 mb-4"></h3> #}
         {{form_start(form)}}
 
-        {# {{form_row(form.type)}} #}
-        {# {{form_row(form.language)}} #}
         {{form_row(form.reciter)}}
         {{form_row(form.surah)}}
 

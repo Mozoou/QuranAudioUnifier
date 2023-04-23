@@ -31,7 +31,7 @@ class AudioUnify
         try {
             $audioOutput
                 ->concat($audios)
-                ->saveFromSameCodecs($newFileName, TRUE)    
+                ->saveFromSameCodecs($newFileName, true)
             ;
             return $newFileName;
         } catch (\Throwable $th) {
