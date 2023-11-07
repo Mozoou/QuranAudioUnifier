@@ -8,6 +8,7 @@ This is a Symfony project that aims to unify audio files for the Coran, the holy
  - PHP
  - Composer
  - FFPMEG
+ - NodeJs
 # Installation
 
 To install this Symfony project, follow these steps:
